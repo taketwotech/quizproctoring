@@ -1,0 +1,11 @@
+#page-mod-quiz-attempt #video {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1000;
+    width: 280px;
+}
+
+#page-mod-quiz-attempt .othernav .endtestlink {
+    display: none;
+}
