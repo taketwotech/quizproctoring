@@ -31,6 +31,18 @@ class quizaccess_quizproctoring extends quiz_access_rule_base {
     }
 
     public function prevent_access() {
+        global $DB, $CFG;
+        if (empty($CFG->quizaccess_proctoring_aws_key) && empty($CFG->quizaccess_proctoring_aws_secret)) {
+            return get_string('awserror', 'quizaccess_quizproctoring');
+        }
+        try {
+            include_once('image.php');
+            \quizaccess_quizproctoring\aws\camera::init();
+            $dataimg = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image));
+            $rest = \quizaccess_quizproctoring\aws\camera::detect_faces($dataimg);
+        } catch(Exception $e) {
+            return get_string('awswrong', 'quizaccess_quizproctoring');
+        }
         if (!$this->check_proctoring()) {
             return get_string('proctoringerror', 'quizaccess_quizproctoring');
         } else {
