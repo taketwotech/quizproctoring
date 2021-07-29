@@ -66,3 +66,5 @@ $string['quizsku_help'] = 'SKU code from the Magento Site for the quiz product.'
 $string['proctoring_videolink'] = "Quiz proctoring video link";
 $string['proctoringlink'] = 'Proctoring video link';
 $string['proctoringlink_help'] = "Please add video link for demovideo of quiz proctoring.";
+$string['awserror'] = "AWS key and secret key are empty";
+$string['awswrong'] = 'Invalid credentials for aws';
